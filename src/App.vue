@@ -11,9 +11,10 @@
             :disabled="this.answerSubmitted"
             :value="answer" 
             :id="'radio-'+index"
+            
             v-model="this.chosenAnswer"
             >
-            <label v-html="answer" :for="'radio-'+index"></label>
+            <label v-html="answer" :for="'radio-'+index" class="answer" :class="{selected:this.chosenAnswer==answer}"></label>
             <br>
         </div>
         <br>
@@ -118,6 +119,7 @@ export default{
     max-width: 960px;
     input[type=radio]{
         margin: 12px 4px;
+        display: none;
     }
 	button.send{
         box-shadow: 3px 4px 0px 0px #1564ad;
@@ -150,10 +152,36 @@ export default{
         -khtml-user-select: none;
         -moz-user-select: none; 
         -ms-user-select: none;
-        user-select: none; 
+        user-select: none; width:140px;
     }
     hr{
         width:100%
     }
-}
+    label.answer {
+            -webkit-user-select: none;
+        user-select: none;
+        display: inline-block;
+        text-align: center;
+        line-height: 30px;
+        padding: 14px 0;
+        border-radius: 3px;
+        font-size: 17px;
+        font-weight: 500;
+        border: 1px solid #bbb;
+        background: #f4f4f4;
+        cursor: pointer;
+        transition: background .3s ease-out,border-color .3s ease-out;
+        overflow: hidden;
+    }
+
+    .answer:hover {
+        background-color: #4545c2;
+        color: #ffffff;
+    }
+    .answer.selected{
+        background-color: #4545c2;
+        color: #ffffff;
+    }
+                
+    }
 </style>
