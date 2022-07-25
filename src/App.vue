@@ -14,7 +14,12 @@
             
             v-model="this.chosenAnswer"
             >
-            <label v-html="answer" :for="'radio-'+index" class="answer" :class="{selected:this.chosenAnswer==answer}"></label>
+            <label v-html="answer" :for="'radio-'+index" class="answer" 
+            :class="{
+                selected:this.chosenAnswer==answer&&!this.answerSubmitted, 
+                right:this.answerSubmitted && this.correctAnswer==answer , 
+                wrong:this.answerSubmitted && this.chosenAnswer != this.correctAnswer && answer==this.chosenAnswer
+                }"></label>
             <br>
         </div>
         <br>
@@ -22,10 +27,10 @@
 		</div>
         <section class="result" v-if="this.answerSubmitted">
             <template v-if="this.chosenAnswer == this.correctAnswer">
-                <h4 v-html="'&#9989; Congratulations, the answer '+ this.correctAnswer + ' is right.'"></h4>
+                <h4 v-html="'&#9989; Congratulations, your answer is right.'"></h4>
             </template>
             <template v-else>
-                <h4 v-html="'&#10060;  I\'m sorry, you picked the wrong answer.The right answer is ' + this.correctAnswer + '.'"
+                <h4 v-html="'&#10060;  I\'m sorry, you picked the wrong answer.'"
                 ></h4>
             </template>
             <button class="send" type="button" @click="this.nextQuestion()">Next question</button>
@@ -182,6 +187,13 @@ export default{
         background-color: #4545c2;
         color: #ffffff;
     }
-                
+    .answer.right{
+        background-color: #10dd54;
+        color: #ffffff;
+    }  
+        .answer.wrong{
+        background-color: #dd3c10;
+        color: #ffffff;
+    }   
     }
 </style>
