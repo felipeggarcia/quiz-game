@@ -1,4 +1,7 @@
+Welcome :)
+
 # quiz-game
+
 
 ## Project setup
 ```
