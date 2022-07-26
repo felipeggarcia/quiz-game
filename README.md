@@ -1,7 +1,9 @@
-Welcome :)
 
-# quiz-game
 
+
+# Quiz-game
+
+## Bem vindo este é um projeto didático usando Vue.js e VueCLI 
 
 ## Project setup
 ```
